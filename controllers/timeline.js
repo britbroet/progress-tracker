@@ -95,7 +95,7 @@ router.get('/:id/edit', function(req, res) {
   });
 });
 
-//EDIT TIMELINE STEP (put)
+//EDIT TIMELINE STEP (put route to update individual timeline step name and description)
 router.put('/:timelineId/:id/edit', function(req, res) {
   db.step.findById(req.params.id).then(function(step) {
     if (step) {
@@ -109,6 +109,40 @@ router.put('/:timelineId/:id/edit', function(req, res) {
 		res.status(500).send({msg: 'error'});
       });
 });
+
+//EDIT TIMELINE STEP POSITION -- HERE!
+router.put('/:timelineId/:id/step', function(req, res) {
+	console.log("node js req.params.id" + req.params.id);
+	db.step.findById(req.params.id).then(function(step) {
+		step.updateAttributes(req.body).then(function() {
+			res.send({msg: 'success'});
+			});
+	}).catch(function(err){
+		res.status(500).send({msg: 'error'});
+	});
+});
+
+// //EDIT TIMELINE STEP POSITION -- HERE!
+// router.put('/:timelineId/:id/stepup', function(req, res) {
+// 	console.log("node js req.params.id" + req.params.id);
+// 	db.step.findById(req.params.id).then(function(step) {
+// 		step.updateAttributes(req.body).then(function() {
+// 			res.send({msg: 'success'});
+// 			});
+// 	}).catch(function(err){
+// 		res.status(500).send({msg: 'error'});
+// 	});
+// });
+
+
+//----
+
+	//step.updateAttributes(req.params.id).then(function(step) {
+		//step.updateAttributes(req.body).then(function() {
+// 			res.send({msg: 'success'});
+// 		});
+// 	});
+// });
 
 
 
