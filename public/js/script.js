@@ -18,22 +18,30 @@ $(function() {
       //console.log($(this).);
       alert("step updated");
       window.location.href = '/';
-    });
-  });
-
-//DELETE STEP FROM TIMELINE
-  $('.delete-btn').click(function(e) {
-    e.preventDefault();
-    var url = $(this).attr('href');
-
-    $.ajax({
-      url: url,
-      method: 'DELETE'
-    }).done(function() {
-      window.location.href = '/';
-    });
-  });
+    }); //end of done
+  }); //end of ajax
 });
+
+// //DELETE STEP FROM TIMELINE (using button for testing)
+//   $('.delete-btn').click(function(e) {
+//     e.preventDefault();
+//     var url = $(this).attr('href');
+
+//     $.ajax({
+//       url: url,
+//       method: 'DELETE'
+//     }).done(function() {
+//       window.location.href = '/';
+//     });
+//   });
+// });
+
+
+
+
+
+
+
 
 
 //MOVE STEP UP IN TIMELINE (change order of steps)
@@ -63,14 +71,17 @@ $(".reorder-up").click(function(){
   return false;
   });
 
+//MOVE STEP DOWN (change order/position of steps)
+
 $(".reorder-down").click(function(){
   var $current = $(this).closest('li')
   var $next = $current.next('li');
   var index = $current.index();
   if($next.length !== 0){
     $current.insertAfter($next);
-    console.log(index + 1);
-    return (index + 1);
+    var newIndex = index + 1;
+    //console.log(index + 1);
+    //return (index + 1);
       var url = $(this).attr('href');
 
       $.ajax({

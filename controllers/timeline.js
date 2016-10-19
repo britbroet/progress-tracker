@@ -146,6 +146,36 @@ router.put('/:timelineId/:id/stepdown', function(req, res) {
 });
 
 
+
+// TESTING POSITION W/ DELETE BUTTON
+router.get('/:timelineId/pos', function(req, res) {
+	console.log('test position firing');
+	db.step.findAll({
+		where: { timelineId: req.params.timelineId }
+	}).then(function(step){
+		//var positions = [];
+		//step.forEach(function(item){
+			//positions.push(item.steppos);
+		//});
+		//console.log('positions: ' + positions);
+		//console.log('max: ' + Math.max(positions));
+		
+		var max = 0;
+		for (var i = 0; i < step.length; i++) {
+			if(step[i].steppos > max) {
+				max = step[i].steppos;
+			}
+			//console.log(typeof step[i].steppos);
+		}
+		console.log(max);
+
+	});
+});
+
+//<a href="/timeline/<%= timeline.id %>/<%= step.id/pos %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn"></a>
+
+
+
 //----
 
 	//step.updateAttributes(req.params.id).then(function(step) {
