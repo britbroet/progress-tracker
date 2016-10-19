@@ -1,3 +1,10 @@
+<h2>Add/edit steps for timeline here</h2>
+
+<h5>Display timeline here</h5>
+
+<%= timeline.title %>
+<%= timeline.description %>
+
 <form action="/timeline/<%= timeline.id %>/addstep" method="POST">
   <div class="form-group">
     <label for="stepName">New Step</label>
@@ -6,7 +13,7 @@
 
   <div class="form-group">
     <label for="stepDesc">Description of New Step</label>
-    <input id="stepDesc" class="form-control" type="text" placeholder='example: "use a lawn mower to make the grass shorter"'  name="stepDesc">
+    <input id="stepDesc" class="form-control" type="text" placeholder='example: "use a lawn mower to make the grass shorter"' name="stepDesc">
   </div>
 
   <div class="form-group">

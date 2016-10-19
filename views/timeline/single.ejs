@@ -3,19 +3,23 @@
 <div class="row">
 
 	<div class="col-xs-12">
-		<h4><%= timeline.title %></h4>
+		<h3><%= timeline.title %></h3>
 	</div>
 	<div class="col-xs-12">
-		<h5><%= timeline.description %></h5>
+		<h4><%= timeline.description %></h4>
 	</div>
 </div>
 
+<hr>
+
 <div>
-	<ul>
+	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
 		<li>
 			<strong><%= step.stepname %></strong>
-			<%= step.stepdesc %>  			
+			<%= step.stepdesc %>  	
+			<a href="/timeline/<%= step.id %>/edit" class="btn btn-info glyphicon glyphicon-edit"></a>
+  			<a href="/timeline/<%= timeline.id %>/<%= step.id %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn"></a>
 		</li>
 		<%	});	%>
 
@@ -24,6 +28,6 @@
 
 
 <div class="row">
-	<a href="/timeline/<%= timeline.id %>/edit" class="btn btn-primary">Add/Edit Steps</a>
+	<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-primary">Add/Edit Steps</a>
 
 </div>

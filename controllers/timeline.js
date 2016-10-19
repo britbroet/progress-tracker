@@ -4,6 +4,9 @@ var db = require("../models");
 var passport = require("../config/ppConfig");
 //var flash = require("connect-flash");
 
+
+
+
 router.get('/all', function(req, res) {
 	db.timeline.findAll({
 		include: [db.step, db.user]
@@ -41,13 +44,13 @@ router.get("/:id", function(req, res){
 });
 
 
-// EDIT TIMELINE STEPS (view)
-router.get("/:id/edit", function(req, res) {
+// ADD TIMELINE STEPS (view)
+router.get("/:id/addstep", function(req, res) {
 	console.log('made it');
 	db.timeline.findOne({
 		where: {id: req.params.id}
 	}).then(function(timeline){
-		res.render("timeline/edit", {timeline: timeline});
+		res.render("timeline/addstep", {timeline: timeline});
 	});
 });
 
@@ -65,6 +68,47 @@ router.post("/:id/addstep", function(req, res){
 		res.redirect("/timeline/" + req.params.id);
 	});
 });
+
+// EDIT TIMELINE STEP (get)
+router.get('/:id/edit', function(req, res) {
+  db.step.findById(req.params.id).then(function(step) {
+    if (step) {
+      res.render('timeline/edit', {step: step});
+    } else {
+      res.status(404).render('error');
+    }
+  }).catch(function(err) {
+    res.status(500).render('error');
+  });
+});
+
+//EDIT TIMELINE STEP (put)
+router.put('/:timelineId/:id/edit', function(req, res) {
+  db.step.findById(req.params.id).then(function(step) {
+    if (step) {
+      step.updateAttributes(req.body).then(function() {
+      	res.send({msg: 'success'});
+    	});
+    } else {
+    	res.status(404).send({msg: 'error'});
+    } 
+	}).catch(function(err){
+		res.status(500).send({msg: 'error'});
+      });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
