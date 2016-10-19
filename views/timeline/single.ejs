@@ -1,25 +1,29 @@
-<h2>this is the new timeline youve just created</h2>
+
 
 <div class="row">
 
-	<div class="col-xs-6">
-		<h4>Timeline Title:</h4>
+	<div class="col-xs-12">
 		<h4><%= timeline.title %></h4>
 	</div>
-	<div class="col-xs-6">
-		<h4>Description:</h4>
-		<h4><%= timeline.description %></h4>
+	<div class="col-xs-12">
+		<h5><%= timeline.description %></h5>
 	</div>
 </div>
 
+<div>
+	<ul>
 		<% timeline.steps.forEach(function(step){ %>
-			<strong>
-			<%= step.stepname %>"> 
-			<%= step.stepdesc %>  
-			</strong>
-
+		<li>
+			<strong><%= step.stepname %></strong>
+			<%= step.stepdesc %>  			
+		</li>
 		<%	});	%>
+
+	</ul>
+</div>
+
 
 <div class="row">
 	<a href="/timeline/<%= timeline.id %>/edit" class="btn btn-primary">Add/Edit Steps</a>
+
 </div>

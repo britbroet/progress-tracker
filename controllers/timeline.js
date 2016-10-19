@@ -4,8 +4,12 @@ var db = require("../models");
 var passport = require("../config/ppConfig");
 //var flash = require("connect-flash");
 
-router.get('/', function(req, res) {
-  res.render('timeline/new');
+router.get('/all', function(req, res) {
+	db.timeline.findAll({
+		include: [db.step, db.user]
+	}).then(function(timelines){
+		res.render("timeline/index", {timelines: timelines});
+	}); 
 });
 
 router.get('/new', function(req, res) {
@@ -32,10 +36,10 @@ router.get("/:id", function(req, res){
 		where: {id: req.params.id},
 		include: [db.step, db.user]
 	}).then(function(timeline){
-		console.log('timeline.title: ' + timeline.title);
 		res.render("timeline/single", {timeline: timeline}); 
 	});
 });
+
 
 // EDIT TIMELINE STEPS (view)
 router.get("/:id/edit", function(req, res) {
@@ -50,23 +54,16 @@ router.get("/:id/edit", function(req, res) {
 
 // ADD TIMELINE STEP (post)
 router.post("/:id/addstep", function(req, res){
-	// console.log('req.params.id ' + req.params.id);
-	// db.timeline.find({
-	// 	where: {id: req.params.id}
-	// })
-	// .then(function(req, res) {
-		db.step.create({
-			timelineId: req.params.id,
-			stepname: req.body.stepName,
-			stepdesc: req.body.stepDesc,
-			steppos: req.body.stepPosition
-		})
-//	})
-		.then(function(timeline){ //<-- returning new timeline created
-			console.log('success?!');
-			res.redirect("/timeline/" + req.params.id);
-		});
-
+	db.step.create({
+		timelineId: req.params.id,
+		stepname: req.body.stepName,
+		stepdesc: req.body.stepDesc,
+		steppos: req.body.stepPosition
+	})
+	.then(function(timeline){ //<-- returning new timeline created
+		console.log('success?!');
+		res.redirect("/timeline/" + req.params.id);
+	});
 });
 
 

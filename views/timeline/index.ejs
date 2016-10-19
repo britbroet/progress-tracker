@@ -1,0 +1,10 @@
+<h3> All timelines: </h3>
+
+	<% timelines.forEach(function(timeline) { %>
+		<div><strong>
+		<a href="/timeline/<%= timeline.id %>" class="btn btn-primary">
+		<%= timeline.title%>:</a></strong>
+		<em><%= timeline.description %></em></div>
+		
+	<% }); %>
+
