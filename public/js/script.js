@@ -30,4 +30,30 @@ $(function() {
   });
 });
 
+
+// move up/down function
+
+$(".reorder-up").click(function(){
+  console.log('clicked reorder up');
+  var $current = $(this).closest('li');
+  var $previous = $current.prev('li');
+  if($previous.length !== 0){
+      $current.insertBefore($previous);
+  }
+  return false;
+  });
+
+$(".reorder-down").click(function(){
+  console.log('clicked reorder down');
+  var $current = $(this).closest('li')
+  var $next = $current.next('li');
+  if($next.length !== 0){
+    $current.insertAfter($next);
+  }
+  return false;
+});
+
+
+
+
 });

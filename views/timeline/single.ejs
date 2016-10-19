@@ -16,6 +16,12 @@
 	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
 		<li>
+			<a href="#" class="reorder-up"> 
+				<span class="glyphicon glyphicon-arrow-up"></span>
+			</a>
+			<a href="#" class="reorder-down">
+				<span class="glyphicon glyphicon-arrow-down"></span>
+			</a>
 			<strong><%= step.stepname %></strong>
 			<%= step.stepdesc %>  	
 			<a href="/timeline/<%= step.id %>/edit" class="btn btn-info glyphicon glyphicon-edit"></a>
