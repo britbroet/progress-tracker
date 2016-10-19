@@ -34,21 +34,25 @@ $(function() {
 // move up/down function
 
 $(".reorder-up").click(function(){
-  console.log('clicked reorder up');
   var $current = $(this).closest('li');
   var $previous = $current.prev('li');
+  var index = $current.index();
   if($previous.length !== 0){
       $current.insertBefore($previous);
+      console.log(index - 1);
+      return (index - 1);
   }
   return false;
   });
 
 $(".reorder-down").click(function(){
-  console.log('clicked reorder down');
   var $current = $(this).closest('li')
   var $next = $current.next('li');
+  var index = $current.index();
   if($next.length !== 0){
     $current.insertAfter($next);
+    console.log(index + 1);
+    return (index + 1);
   }
   return false;
 });
