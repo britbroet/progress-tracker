@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     timelineId: DataTypes.INTEGER,
     stepname: DataTypes.STRING,
     stepdesc: DataTypes.TEXT,
-    steppos: DataTypes.INTEGER
+    steppos: DataTypes.INTEGER,
+    status: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

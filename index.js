@@ -6,8 +6,10 @@ var passport = require('./config/ppConfig');
 var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
+//var ConnectRoles = require('connect-roles');
 require("dotenv").config();
 var app = express();
+var db = require("./models");
 
 app.set('view engine', 'ejs');
 
@@ -35,6 +37,19 @@ app.get('/', function(req, res) {
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
+});
+
+
+// SHARE TIMELINE VIEW
+app.get("/:id/share", function(req, res){
+	console.log('redirected to show single timeline - req.params.id = ' + req.params.id);
+	db.timeline.find({
+		where: {id: req.params.id},
+		include: [db.step, db.user],
+		order: '"steps.steppos" ASC'
+	}).then(function(timeline){
+		res.render("timeline/share", {layout: false, timeline: timeline});
+	});
 });
 
 app.use('/auth', require('./controllers/auth'));
