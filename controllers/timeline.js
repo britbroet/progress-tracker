@@ -37,7 +37,8 @@ router.get("/:id", function(req, res){
 	console.log('redirected to show single timeline - req.params.id = ' + req.params.id);
 	db.timeline.find({
 		where: {id: req.params.id},
-		include: [db.step, db.user]
+		include: [db.step, db.user],
+		order: '"steps.steppos" ASC'
 	}).then(function(timeline){
 		res.render("timeline/single", {timeline: timeline}); 
 	});
