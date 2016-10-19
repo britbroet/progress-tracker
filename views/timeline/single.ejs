@@ -16,10 +16,10 @@
 	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
 		<li>
-			<a href="<%= timeline.id %>/<%= step.id %>/step" class="reorder-up"> 
+			<a href="<%= timeline.id %>/<%= step.id %>/stepup" class="reorder-up"> 
 				<span class="glyphicon glyphicon-arrow-up"></span>
 			</a>
-			<a href="#" class="reorder-down">
+			<a href="<%= timeline.id %>/<%= step.id %>/stepdown" class="reorder-down">
 				<span class="glyphicon glyphicon-arrow-down"></span>
 			</a>
 			<strong><%= step.stepname %></strong>

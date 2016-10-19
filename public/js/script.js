@@ -57,11 +57,8 @@ $(".reorder-up").click(function(){
         data: 'steppos=' + newIndex
       }).done(function(resultData) {
         alert("position updated");
-        window.location.href = '/';
+        //window.location.href = '/';
       });
-
-      
-
   }
   return false;
   });
@@ -74,6 +71,16 @@ $(".reorder-down").click(function(){
     $current.insertAfter($next);
     console.log(index + 1);
     return (index + 1);
+      var url = $(this).attr('href');
+
+      $.ajax({
+        url: url,
+        method: 'PUT',
+        data: 'steppos=' + newIndex
+      }).done(function(resultData) {
+        alert("position updated");
+        //window.reload();
+      });
   }
   return false;
 });

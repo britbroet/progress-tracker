@@ -2,9 +2,20 @@ var express = require('express');
 var router = express.Router();
 var db = require("../models");
 var passport = require("../config/ppConfig");
-//var flash = require("connect-flash");
+var flash = require("connect-flash");
+var isLoggedIn = require('../middleware/isLoggedIn');
+
+router.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  res.locals.alerts = req.flash();
+  next();
+});
 
 
+// ADD THIS TO THINGS:
+// app.get('/profile', isLoggedIn, function(req, res) {
+//   res.render('profile');
+// });
 
 
 router.get('/all', function(req, res) {
@@ -23,7 +34,7 @@ router.get('/new', function(req, res) {
 // POST NEW TIMELINE (create new timeline)
 router.post("/new", function(req, res){
 	db.timeline.create({
-		userId: req.body.user,
+		userId: res.locals.currentUser.id,
 		title: req.body.timelineName,
 		description: req.body.timelineDesc
 	}).then(function(timeline){ //<-- returning new timeline created
@@ -110,8 +121,8 @@ router.put('/:timelineId/:id/edit', function(req, res) {
       });
 });
 
-//EDIT TIMELINE STEP POSITION -- HERE!
-router.put('/:timelineId/:id/step', function(req, res) {
+//EDIT TIMELINE STEP POSITION -- UP
+router.put('/:timelineId/:id/stepup', function(req, res) {
 	console.log("node js req.params.id" + req.params.id);
 	db.step.findById(req.params.id).then(function(step) {
 		step.updateAttributes(req.body).then(function() {
@@ -122,17 +133,17 @@ router.put('/:timelineId/:id/step', function(req, res) {
 	});
 });
 
-// //EDIT TIMELINE STEP POSITION -- HERE!
-// router.put('/:timelineId/:id/stepup', function(req, res) {
-// 	console.log("node js req.params.id" + req.params.id);
-// 	db.step.findById(req.params.id).then(function(step) {
-// 		step.updateAttributes(req.body).then(function() {
-// 			res.send({msg: 'success'});
-// 			});
-// 	}).catch(function(err){
-// 		res.status(500).send({msg: 'error'});
-// 	});
-// });
+// //EDIT TIMELINE STEP POSITION -- DOWN
+router.put('/:timelineId/:id/stepdown', function(req, res) {
+	console.log("node js req.params.id" + req.params.id);
+	db.step.findById(req.params.id).then(function(step) {
+		step.updateAttributes(req.body).then(function() {
+			res.send({msg: 'success'});
+			});
+	}).catch(function(err){
+		res.status(500).send({msg: 'error'});
+	});
+});
 
 
 //----
