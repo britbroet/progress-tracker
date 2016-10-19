@@ -3,3 +3,38 @@
 	margin-top: 20px;
 	padding: 10px;
 }
+
+/*input[type=radio]:checked {
+    margin: 4px 5px 0 0 !important;
+    line-height: normal;
+}*/
+
+input[type=radio] {
+    margin: 4px 5px 0 0 !important;
+    line-height: normal;
+}
+
+.stepStatus {
+	padding-top: 5px;
+}
+
+.stepContainer {
+	margin-bottom: 20px;
+	background-color: #efefef;
+}
+
+.stepTitle {
+	font-size: 24px;
+	line-height: 24px;
+}
+
+
+@media (max-width: 386px) {
+	input[type=radio] {
+	    margin: 4px auto;
+	    margin-top: 1px\9;
+	    line-height: normal;
+	    display: block;
+	}
+}
+

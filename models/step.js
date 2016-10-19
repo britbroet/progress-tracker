@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     stepname: DataTypes.STRING,
     stepdesc: DataTypes.TEXT,
     steppos: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN
+    //status: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

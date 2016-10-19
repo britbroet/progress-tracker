@@ -1,0 +1,66 @@
+<div class="row text-center">
+    <div class="col-xs-12">
+        <h3><%= timeline.title %></h3>
+    </div>
+    <div class="col-xs-12">
+        <h4><%= timeline.description %></h4>
+    </div>
+</div>
+
+<hr>
+
+<div>
+
+    <form action="/timeline/<%= timeline.id %>/update" method="POST">
+
+    
+
+        <% timeline.steps.forEach(function(step){ %>
+
+            <div class="row stepContainer">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="stepTitle"><strong><%= step.stepname %></strong></div>
+                    <div class="stepDesc"><%= step.stepdesc %></div>    
+                </div>
+
+                <div class="col-xs-12 col-sm-6 text-center">
+                    <div class="row">
+                         <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">To Do</a></li>
+                                <li><a href="#">In Progress</a></li>
+                                <li><a href="#">Completed</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                            <input type="text" class="form-control" aria-label="...">
+                        </div><!-- /input-group -->                       
+                    
+
+                    </div>
+                </div>
+
+            </div>
+
+                <%  }); %>
+
+         
+     
+        <div class="row text-center">
+            <input class="btn btn-primary" type="submit" value="Update">
+        </div>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<div class="row text-center">
+	<div class="col-xs-12">
+		<h3><%= timeline.title %></h3>
+	</div>
+	<div class="col-xs-12">
+		<h4><%= timeline.description %></h4>
+	</div>
+</div>
+
+<hr>
+
+<div>
+
+	<form action="/timeline/<%= timeline.id %>/update" method="POST">
+
+	
+
+		<% timeline.steps.forEach(function(step){ %>
+
+			<div class="row stepContainer">
+				<div class="col-xs-12 col-sm-6">
+					<div class="stepTitle"><strong><%= step.stepname %></strong></div>
+					<div class="stepDesc"><%= step.stepdesc %></div>	
+				</div>
+
+				<div class="col-xs-12 col-sm-6 text-center">
+					<div class="row">
+		    			
+		    			<div class="col-xs-4 stepStatus text-right">
+		    				<label for="todo"><input type="radio" name="status_<%= step.id %>" checked>To Do</label>
+		    			</div>
+
+		    			<div class="col-xs-4 stepStatus text-center">
+		    				<label for="inProgress"><input type="radio" name="status_<%= step.id %>">In Progress</label>
+		    			</div>
+
+		    			<div class="col-xs-4 stepStatus text-left">
+		    				<label for="complete"><input type="radio" name="status_<%= step.id %>">Complete</label>
+		    			</div>
+
+		    		</div>
+	    		</div>
+
+	    	</div>
+
+				<%	});	%>
+
+		 
+	 
+		<div class="row text-center">
+			<input class="btn btn-primary" type="submit" value="Update">
+		</div>
+	</form>
+
+</div>
