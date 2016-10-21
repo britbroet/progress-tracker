@@ -105,14 +105,48 @@ router.get("/:id/addstep", function(req, res) {
 });
 
 
+
+//TESTING POSITION W/ DELETE BUTTON
+// router.get('/:timelineId/pos', function(req, res) {
+// 	console.log('test position firing');
+// 	db.step.findAll({
+// 		where: { timelineId: req.params.timelineId }
+// 	}).then(function(step){
+// 		console.log('step: ' + step);
+// 		var max = 0;
+// 		for (var i = 0; i < step.length; i++) {
+// 			if(step[i].steppos > max) {
+// 				max = step[i].steppos;
+// 			}
+// 		}
+// 		console.log(max);
+// 	});
+// });
+
+
+
 // ADD TIMELINE STEP (post)
 router.post("/:id/addstep", function(req, res){
-	db.step.create({
-		timelineId: req.params.id,
-		stepname: req.body.stepName,
-		stepdesc: req.body.stepDesc,
-		steppos: req.body.stepPosition
-	})
+	
+	db.step.findAll({
+		where: { timelineId: req.params.id }
+	}).then(function(step){
+		console.log('step: ' + step);
+		var max = 0;	
+		for (var i = 0; i < step.length; i++) {
+			if(step[i].steppos > max) {
+				max = (step[i].steppos) + 1;
+			} //end of if
+		} // end of for loop
+		console.log('max: ' + max);
+
+		db.step.create({
+			timelineId: req.params.id,
+			stepname: req.body.stepName,
+			stepdesc: req.body.stepDesc,
+			steppos: max
+		})
+	}) 
 	.then(function(timeline){ //<-- returning new timeline created
 		console.log('success?!');
 		res.redirect("/timeline/" + req.params.id);
@@ -203,21 +237,21 @@ router.put('/:timelineId/:id/stepdown', function(req, res) {
 
 
 
-// TESTING POSITION W/ DELETE BUTTON
-router.get('/:timelineId/pos', function(req, res) {
-	console.log('test position firing');
-	db.step.findAll({
-		where: { timelineId: req.params.timelineId }
-	}).then(function(step){
-		var max = 0;
-		for (var i = 0; i < step.length; i++) {
-			if(step[i].steppos > max) {
-				max = step[i].steppos;
-			}
-		}
-		console.log(max);
-	});
-});
+// // TESTING POSITION W/ DELETE BUTTON
+// router.get('/:timelineId/pos', function(req, res) {
+// 	console.log('test position firing');
+// 	db.step.findAll({
+// 		where: { timelineId: req.params.timelineId }
+// 	}).then(function(step){
+// 		var max = 0;
+// 		for (var i = 0; i < step.length; i++) {
+// 			if(step[i].steppos > max) {
+// 				max = step[i].steppos;
+// 			}
+// 		}
+// 		console.log(max);
+// 	});
+// });
 
 
 
