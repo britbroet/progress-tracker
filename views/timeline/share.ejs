@@ -29,7 +29,7 @@
 		<ul class="list-unstyled">
 			<% timeline.steps.forEach(function(step){ %>
 			
-			<div class="stepui"></div>
+			<div id="<%= step.id %>" class="stepui <%= step.status %>"></div>
 
 			<li>
 				<strong><%= step.stepname %></strong>

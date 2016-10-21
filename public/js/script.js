@@ -145,4 +145,26 @@ $('.delete-btn').click(function(e) {
 
 
 
+// test stuff
+// $("#5").addClass("huzzah");
+
+var statusView = function() {
+  console.log('firing');
+  var target = $(".stepui");
+  if (target.hasClass("1")) {
+    target.addClass("huzzah");
+  }
+  else if (target.hasClass("2")) {
+    target.addClass("huzzah");
+  }  
+  else if (target.hasClass("3")) {
+    target.addClass("huzzah");
+  }
+}
+
+statusView();
+
+
+
+
 });

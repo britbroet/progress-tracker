@@ -28,6 +28,17 @@ input[type=radio] {
 	line-height: 24px;
 }
 
+.stepui {
+	width: 20px;
+	height: 20px;
+	/*background-color: blue;*/
+	border: 1px solid #000;
+}
+
+.huzzah {
+	background-color: yellow;
+}
+
 
 @media (max-width: 386px) {
 	input[type=radio] {
