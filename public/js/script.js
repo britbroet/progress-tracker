@@ -96,6 +96,8 @@ $(".reorder-up").click(function(){
   return false;
   });
 
+
+
 //MOVE STEP DOWN (change order/position of steps)
 
 $(".reorder-down").click(function(){
@@ -120,6 +122,7 @@ $(".reorder-down").click(function(){
   }
   return false;
 });
+
 
 
 // DELETE STEP

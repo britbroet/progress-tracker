@@ -11,8 +11,18 @@ require("dotenv").config();
 var app = express();
 var db = require("./models");
 
-app.set('view engine', 'ejs');
 
+
+
+// // Twilio Credentials 
+// var accountSid = 'ACfe27178453fac5de70e7b6281c181618'; 
+// var authToken = 'your_auth_token'; 
+ 
+// //require the Twilio module and create a REST client 
+// var client = require('twilio')(accountSid, authToken); 
+ 
+
+app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
@@ -52,6 +62,23 @@ app.get("/:id/share", function(req, res){
 	});
 });
 
+
+// TWILIO TEXT ALERTS
+
+// client.messages.create({ 
+//     to: "+15558675309", 
+//     from: "+15017250604", 
+//     body: "This is the ship that made the Kessel Run in fourteen parsecs?", 
+//     mediaUrl: "https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg",  
+// }, function(err, message) { 
+//     console.log(message.sid); 
+// });
+
+
+
+
+
+app.use('/viewer', require('./controllers/viewer'));
 app.use('/auth', require('./controllers/auth'));
 app.use('/timeline', require('./controllers/timeline'));
 
