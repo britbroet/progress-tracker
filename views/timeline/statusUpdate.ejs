@@ -11,41 +11,49 @@
 
 <div>
 
-	<form action="/timeline/<%= timeline.id %>/update" method="POST">
+	
 
 	
 
 		<% timeline.steps.forEach(function(step){ %>
 
+
+
 			<div class="row stepContainer">
 				<div class="col-xs-12 col-sm-6">
 					<div class="stepTitle"><strong><%= step.stepname %></strong></div>
-					<div class="stepDesc"><%= step.stepdesc %></div>	
+					<div class="stepDesc"><%= step.stepdesc %></div>
+					<div class="stepStatus"><%= step.status %></div>	
 				</div>
+
 
 				<div class="col-xs-12 col-sm-6 text-center">
 					<div class="row">
+
+					<form action="/timeline/<%= timeline.id %>/update" method="POST" class="step-status">
 		    			
 		    			<div class="col-xs-4 stepStatus text-right">
-		    				<label for="todo"><input type="radio" name="status_<%= step.id %>" checked>To Do</label>
+		    				<label for="todo"><input type="radio" class="statusradio" name="status_<%= step.id %>" value="1" <% if ( step.status == 1) { %> checked <% } %>> To Do</label>
 		    			</div>
 
 		    			<div class="col-xs-4 stepStatus text-center">
-		    				<label for="inProgress"><input type="radio" name="status_<%= step.id %>">In Progress</label>
+		    				<label for="inProgress"><input type="radio" class="statusradio" name="status_<%= step.id %>" value="2" <% if ( step.status == 2) { %> checked <% } %>>In Progress</label>
 		    			</div>
 
 		    			<div class="col-xs-4 stepStatus text-left">
-		    				<label for="complete"><input type="radio" name="status_<%= step.id %>">Complete</label>
+		    				<label for="complete"><input type="radio" class="statusradio" name="status_<%= step.id %>" value="3" <% if (step.status == 3) { %> checked <% } %>>Complete</label>
 		    			</div>
 
 		    		</div>
 	    		</div>
 
+
+
 	    	</div>
 
 				<%	});	%>
 
-		 
+		 		
 	 
 		<div class="row text-center">
 			<input class="btn btn-primary" type="submit" value="Update">

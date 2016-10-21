@@ -63,9 +63,35 @@ router.get("/:id/status", function(req, res){
 		include: [db.step, db.user],
 		order: '"steps.steppos" ASC'
 	}).then(function(timeline){
-		res.render("timeline/altStatus", {timeline: timeline}); 
+		res.render("timeline/statusUpdate", {timeline: timeline}); 
 	});
 });
+
+
+
+
+// UPATE TIMELINE STATUS (post)
+
+//     /timeline/<%= timeline.id %>/update
+
+router.put('/:id/update', function(req, res) {
+  db.step.findById(req.params.id).then(function(step) {
+    if (step) {
+      step.updateAttributes(req.body).then(function() {
+      	res.send({msg: 'success'});
+    	});
+    } else {
+    	res.status(404).send({msg: 'error'});
+    } 
+	}).catch(function(err){
+		res.status(500).send({msg: 'error'});
+      });
+});
+
+
+
+
+
 
 
 // ADD TIMELINE STEPS (view)
@@ -135,9 +161,10 @@ router.put('/:timelineId/:id/stepup', function(req, res) {
 
 // //EDIT TIMELINE STEP POSITION -- DOWN
 router.put('/:timelineId/:id/stepdown', function(req, res) {
-	console.log("node js req.params.id" + req.params.id);
+	console.log("node js req.params.id: " + req.params.id);
 	db.step.findById(req.params.id).then(function(step) {
 		step.updateAttributes(req.body).then(function() {
+			//console.log('req.body is this: ' + req.body);
 			res.send({msg: 'success'});
 			});
 	}).catch(function(err){
@@ -147,30 +174,60 @@ router.put('/:timelineId/:id/stepdown', function(req, res) {
 
 
 
+// // TESTING POSITION W/ DELETE BUTTON
+// router.get('/:timelineId/pos', function(req, res) {
+// 	console.log('test position firing');
+// 	db.step.findAll({
+// 		where: { timelineId: req.params.timelineId }
+// 	}).then(function(step){
+// 		//var positions = [];
+// 		//step.forEach(function(item){
+// 			//positions.push(item.steppos);
+// 		//});
+// 		//console.log('positions: ' + positions);
+// 		//console.log('max: ' + Math.max(positions));
+		
+// 		var max = 0;
+// 		for (var i = 0; i < step.length; i++) {
+// 			if(step[i].steppos > max) {
+// 				max = step[i].steppos;
+// 			}
+// 			//console.log(typeof step[i].steppos);
+// 		}
+// 		console.log(max);
+
+// 	});
+// });
+
+
+
+
+
 // TESTING POSITION W/ DELETE BUTTON
 router.get('/:timelineId/pos', function(req, res) {
 	console.log('test position firing');
 	db.step.findAll({
 		where: { timelineId: req.params.timelineId }
 	}).then(function(step){
-		//var positions = [];
-		//step.forEach(function(item){
-			//positions.push(item.steppos);
-		//});
-		//console.log('positions: ' + positions);
-		//console.log('max: ' + Math.max(positions));
-		
 		var max = 0;
 		for (var i = 0; i < step.length; i++) {
 			if(step[i].steppos > max) {
 				max = step[i].steppos;
 			}
-			//console.log(typeof step[i].steppos);
 		}
 		console.log(max);
-
 	});
 });
+
+
+
+
+
+
+
+
+
+
 
 //<a href="/timeline/<%= timeline.id %>/<%= step.id/pos %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn"></a>
 
