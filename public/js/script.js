@@ -46,13 +46,6 @@ $(function() {
     var stepid = $(this).attr('name').substring(7);
     var formData = {stepid: stepid, status: $(this).attr('value')};
     console.log('stepid: ' + stepid);
-
-
-
-    //$(this).serialize();
-
-
-
     console.log('formData: ' + formData);
     //console.log('url: ' + url);
     console.log('this: ' + $(this));
@@ -127,6 +120,24 @@ $(".reorder-down").click(function(){
   }
   return false;
 });
+
+
+// DELETE STEP
+
+$('.delete-btn').click(function(e) {
+  e.preventDefault();
+  var url = $(this).attr('href');
+  var timeline = $(this).attr('data-timeline');
+
+  $.ajax({
+    url: url,
+    method: 'DELETE'
+  }).done(function() {
+    console.log("$(this).attr('data-timeline'): " + timeline);
+    window.location.href = '/timeline/' + timeline;
+  });
+});
+
 
 
 

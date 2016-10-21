@@ -208,31 +208,20 @@ router.put('/:timelineId/:id/stepdown', function(req, res) {
 
 
 
-// // TESTING POSITION W/ DELETE BUTTON
-// router.get('/:timelineId/pos', function(req, res) {
-// 	console.log('test position firing');
-// 	db.step.findAll({
-// 		where: { timelineId: req.params.timelineId }
-// 	}).then(function(step){
-// 		//var positions = [];
-// 		//step.forEach(function(item){
-// 			//positions.push(item.steppos);
-// 		//});
-// 		//console.log('positions: ' + positions);
-// 		//console.log('max: ' + Math.max(positions));
-		
-// 		var max = 0;
-// 		for (var i = 0; i < step.length; i++) {
-// 			if(step[i].steppos > max) {
-// 				max = step[i].steppos;
-// 			}
-// 			//console.log(typeof step[i].steppos);
-// 		}
-// 		console.log(max);
-
-// 	});
-// });
-
+// DELETE STEP
+router.delete('/:timelineId/:id/delete', function(req, res) {
+  db.step.findById(req.params.id).then(function(step) {
+    if (step) {
+      step.destroy().then(function() {
+        res.send({msg: 'success'});
+      });
+    } else {
+      res.status(404).send({msg: 'error'});
+    }
+  }).catch(function(err) {
+    res.status(500).send({msg: 'error'});
+  });
+});
 
 
 
