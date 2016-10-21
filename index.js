@@ -14,12 +14,12 @@ var db = require("./models");
 
 
 
-// // Twilio Credentials 
-// var accountSid = 'ACfe27178453fac5de70e7b6281c181618'; 
-// var authToken = 'your_auth_token'; 
+// Twilio Credentials 
+var accountSid = 'ACfe27178453fac5de70e7b6281c181618'; 
+var authToken = '206eda15c8d9d06a308e6791ac3affb9'; 
  
-// //require the Twilio module and create a REST client 
-// var client = require('twilio')(accountSid, authToken); 
+//require the Twilio module and create a REST client 
+var client = require('twilio')(accountSid, authToken); 
  
 
 app.set('view engine', 'ejs');
