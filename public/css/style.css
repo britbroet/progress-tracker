@@ -10,34 +10,72 @@
 }*/
 
 input[type=radio] {
-    margin: 4px 5px 0 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
     line-height: normal;
+}
+
+label.status {
+	text-align: center;
 }
 
 .stepStatus {
 	padding-top: 5px;
 }
 
+
+
+.updateContainer {
+	min-height: 200px;
+	display: none;
+	padding-left: 50px;
+	padding-top: 20px;
+	/*//background-color: #efefef;*/
+}
+
+
+/*.btn.retractButton {
+	display: none ;
+}*/
+
+.btn.hideRetract {
+	display: none;
+}
+
+
 .stepContainer {
 	margin-bottom: 20px;
-	background-color: #efefef;
+	//background-color: #efefef;
+	padding-left: 20px;
 }
 
 .stepTitle {
-	font-size: 24px;
-	line-height: 24px;
+	font-size: 16px;
+	line-height: 16px;
 }
 
 .stepui {
-	width: 20px;
-	height: 20px;
-	/*background-color: blue;*/
-	border: 1px solid #000;
+	width: 26px;
+	height: 26px;
+	/*border: 1px solid #000;*/
+	display: inline-block;
+	//margin: 5px;
+	border-radius: 13px;
 }
 
-.huzzah {
+.toDo {
+	background-color: red;
+}
+
+.inProgress {
 	background-color: yellow;
 }
+
+.complete {
+	background-color: green;
+}
+
+
 
 
 @media (max-width: 386px) {

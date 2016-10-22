@@ -10,8 +10,16 @@ var isLoggedIn = require('./middleware/isLoggedIn');
 require("dotenv").config();
 var app = express();
 var db = require("./models");
+// var jQuery = require("jsdom").env("", function(err, window) {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
+ 
+//     var $ = require("jquery")(window);
+// });
 
-
+// var bootstrap = require('bootstrap');
 
 
 // Twilio Credentials 
@@ -81,25 +89,25 @@ app.get("/:id/share", function(req, res){
 
 
 // Send an SMS text message
- client.sendMessage({
+//  client.sendMessage({
 
-    to:'+12067956807', // Any number Twilio can deliver to
-    from: '+12062021353', // A number you bought from Twilio and can use for outbound communication
-    body: 'ITS ALIVE!!!!!!! OMFG IM SO EXCITED FOR TACOS.' // body of the SMS message
+//     to:'+12067956807', // Any number Twilio can deliver to
+//     from: '+12062021353', // A number you bought from Twilio and can use for outbound communication
+//     body: 'ITS ALIVE!!!!!!! OMFG IM SO EXCITED FOR TACOS.' // body of the SMS message
 
-}, function(err, responseData) { //this function is executed when a response is received from Twilio
+// }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-    if (!err) { // "err" is an error received during the request, if any
+//     if (!err) { // "err" is an error received during the request, if any
 
-        // "responseData" is a JavaScript object containing data received from Twilio.
-        // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
-        // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+//         // "responseData" is a JavaScript object containing data received from Twilio.
+//         // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
+//         // http://www.twilio.com/docs/api/rest/sending-sms#example-1
 
-        console.log(responseData.from); // outputs "+14506667788"
-        console.log(responseData.body); // outputs "word to your mother."
+//         console.log(responseData.from); // outputs "+14506667788"
+//         console.log(responseData.body); // outputs "word to your mother."
 
-    }
-});
+//     }
+// });
 
 
 

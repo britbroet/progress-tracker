@@ -20,7 +20,8 @@ router.use(function(req, res, next) {
 
 router.get('/all', function(req, res) {
 	db.timeline.findAll({
-		include: [db.step, db.user]
+		include: [db.step, db.user],
+		order: [['updatedAt', 'DESC']]
 	}).then(function(timelines){
 		res.render("timeline/index", {timelines: timelines});
 	}); 
@@ -221,6 +222,35 @@ router.delete('/:timelineId/:id/delete', function(req, res) {
   }).catch(function(err) {
     res.status(500).send({msg: 'error'});
   });
+});
+
+// EDIT TIMELINE INFO (title/description) (get)
+router.get('/:id/editinfo', function(req, res) {
+  db.timeline.findById(req.params.id).then(function(timeline) {
+  	console.log('edit timeline info route works!');
+    if (timeline) {
+      res.render('timeline/editinfo', {timeline: timeline});
+    } else {
+      res.status(404).render('error');
+    }
+  }).catch(function(err) {
+    res.status(500).render('error');
+  });
+});
+
+//EDIT TIMELINE INFO (put route to update individual timeline title/description)
+router.put('/:id/editinfo', function(req, res) {
+  db.timeline.findById(req.params.id).then(function(timeline) {
+    if (timeline) {
+      timeline.updateAttributes(req.body).then(function() {
+      	res.send({msg: 'success'});
+    	});
+    } else {
+    	res.status(404).send({msg: 'error'});
+    } 
+	}).catch(function(err){
+		res.status(500).send({msg: 'error'});
+      });
 });
 
 

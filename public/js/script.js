@@ -145,24 +145,81 @@ $('.delete-btn').click(function(e) {
 
 
 
-// test stuff
+// test stuff - THIS CHANGES COLORS OF THINGS IN SHARE VIEW BASED ON STATUS
 // $("#5").addClass("huzzah");
 
+// var statusView = function() {
+//   console.log('firing');
+//   var target = $(".stepui");
+//   if (target.hasClass("1")) {
+//     target.addClass("huzzah1").removeClass('huzzah2').removeClass('huzzah3');
+//   }
+//   else if (target.hasClass("2")) {
+//     target.addClass("huzzah2").removeClass('huzzah1').removeClass('huzzah3');
+//   }  
+//   else if (target.hasClass("3")) {
+//     target.removeClass('huzzah2').removeClass('huzzah1').addClass("huzzah3");
+//   }
+// }
+
+
 var statusView = function() {
-  console.log('firing');
-  var target = $(".stepui");
-  if (target.hasClass("1")) {
-    target.addClass("huzzah");
-  }
-  else if (target.hasClass("2")) {
-    target.addClass("huzzah");
-  }  
-  else if (target.hasClass("3")) {
-    target.addClass("huzzah");
-  }
+  $('.1').addClass('toDo');
+  $('.2').addClass('inProgress');
+  $('.3').addClass('complete');
 }
 
+
+
 statusView();
+
+
+// EDIT TIMELINE INFO (NAME/DESCRIPTION)
+$(function() {
+  $('.edit-form-info').submit(function(e) {
+    e.preventDefault();
+    var url = $(this).attr('action');
+    var formData = $(this).serialize();
+    console.log('formData: ' + formData);
+    console.log('url: ' + url);
+    console.log('this: ' + $(this));
+
+    $.ajax({
+      url: url,
+      method: 'PUT',
+      data: formData
+    }).done(function(resultData) {
+      //console.log($(this).);
+      alert("step updated");
+      window.location.href = '/';
+    }); //end of done
+  }); //end of ajax
+});
+
+// TOGGLE FUNCTION
+
+    $('.expandButton').click(function(){
+        //var thisid = $(this).attr('id');
+        var thisid = $(this).attr('data-timeline');
+        //console.log('stepContainer: ' + stepContainerId);
+        console.log('thisid - expand: ' + thisid);
+        $('#updateContainer' + thisid).toggle("blind", 500);
+        $('#expand' + thisid).hide();
+        $('#retract' + thisid).removeClass('hideRetract');
+        $('#retract' + thisid).show();
+    });
+
+    $('.retractButton').click(function(){
+        var thisid = $(this).attr('data-timeline');
+        console.log('thisid - retract: ' + thisid);
+        $('#updateContainer' + thisid).toggle("blind", 500);
+        $('#retract' + thisid).hide();
+        $('#expand' + thisid).show();
+    });
+
+
+
+
 
 
 

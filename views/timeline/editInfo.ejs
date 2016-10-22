@@ -1,0 +1,16 @@
+<h2>Edit Timeline Info</h2>
+
+<form action="/timeline/<%= timeline.id %>/editinfo" class="edit-form-info" role="form">
+  <div class="form-group">
+    <label for="title">Timeline Title</label>
+    <input type="text" class="form-control" id="title" placeholder="Timeline title" name="title" value="<%= timeline.title %>">
+  </div>
+  <div class="form-group">
+    <label for="description">Timeline Description</label>
+    <input type="text" class="form-control" id="description" placeholder="Description of timeline" name="description" value="<%= timeline.description %>">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<a href="/timeline/<%= timeline.id %>">&larr; Back</a>
