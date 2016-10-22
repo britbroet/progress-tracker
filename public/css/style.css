@@ -33,6 +33,9 @@ label.status {
 	/*//background-color: #efefef;*/
 }
 
+.hidden {
+	display: none;
+}
 
 /*.btn.retractButton {
 	display: none ;

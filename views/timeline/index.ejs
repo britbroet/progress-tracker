@@ -15,8 +15,17 @@
 					<%= timeline.title%>:</a></strong>
 				</div> 
 
+
+					
+
+
 				<div class="col-xs-12 col-sm-3">
-					<div id="toggleControl" class="col-xs-4 toggleClosed">
+					<div id="addStep<%= timeline.id %>" class="<% if (timeline.steps.length > 0) { %> hidden <% } %>">
+						<p>timeline steps length: <%= timeline.steps.length %></p>
+						<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-primary">Add Steps</a> 
+					</div>
+
+					<div id="toggleControl" class="col-xs-4 toggleClosed <% if (timeline.steps.length == 0) { %> hidden <% } %>">
 
 						<div class="btn btn-default expandButton" id="expand<%= timeline.id %>" data-timeline="<%= timeline.id %>">
 							<i class="fa fa-plus"> </i> Show steps
