@@ -41,24 +41,17 @@ $(function() {
 $(function() {
   $('.statusradio').click(function(e) {
     e.preventDefault();
-    console.log('this parent: ' + $(this).parent().parent().parent().attr('action'));
-    var url = $(this).parent().parent().parent().attr('action');
+    console.log('this parent: ' + $(this).parent().parent().attr('action'));
+    var url = $(this).parent().parent().attr('action');
     var stepid = $(this).attr('name').substring(7);
     var formData = {stepid: stepid, status: $(this).attr('value')};
-    console.log('stepid: ' + stepid);
-    console.log('formData: ' + formData);
-    //console.log('url: ' + url);
-    console.log('this: ' + $(this));
-    console.log('test: ' + $(this)[0][0]);
 
     $.ajax({
       url: url,
       method: 'PUT',
       data: formData
     }).done(function(resultData) {
-      //console.log($(this).);
-      alert("step updated");
-      //window.location.href = '/';
+      window.location.href = '/timeline/all';
     }); //end of done
   }); //end of ajax
 });
@@ -196,7 +189,9 @@ $(function() {
   }); //end of ajax
 });
 
-// TOGGLE FUNCTION
+
+
+// STEPS TOGGLE FUNCTION
 
     $('.expandButton').click(function(){
         //var thisid = $(this).attr('id');

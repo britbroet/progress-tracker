@@ -50,17 +50,19 @@
 							<div class="row">
 								<form action="/timeline/<%= step.id %>/update" method="POST" class="step-status">
 			    			
-				    			<div class="col-xs-4 stepStatus">
-				    				<label for="todo" class="status"> To Do</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="1" <% if ( step.status == 1) { %> checked <% } %>>
-				    			</div>
+					    			<div class="col-xs-4 stepStatus">
+					    				<label for="todo" class="status"> To Do</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="1" <% if ( step.status == 1) { %> checked <% } %>>
+					    			</div>
 
-				    			<div class="col-xs-4 stepStatus">
-				    				<label for="inProgress" class="status">In Progress</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="2" <% if ( step.status == 2) { %> checked <% } %>>
-				    			</div>
+					    			<div class="col-xs-4 stepStatus">
+					    				<label for="inProgress" class="status">In Progress</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="2" <% if ( step.status == 2) { %> checked <% } %>>
+					    			</div>
 
-				    			<div class="col-xs-4 stepStatus">
-				    				<label for="complete" class="status">Complete</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="3" <% if (step.status == 3) { %> checked <% } %>>
-				    			</div>
+					    			<div class="col-xs-4 stepStatus">
+					    				<label for="complete" class="status">Complete</label><input type="radio" class="statusradio" name="status_<%= step.id %>" value="3" <% if (step.status == 3) { %> checked <% } %>>
+					    			</div>
+
+				    			</form>
 			    			</div>
 		    			</div>
 
