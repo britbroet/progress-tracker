@@ -21,7 +21,8 @@ router.use(function(req, res, next) {
 router.get('/all', function(req, res) {
 	db.timeline.findAll({
 		include: [db.step, db.user],
-		order: [['updatedAt', 'DESC']]
+		order: [['createdAt', 'DESC'],
+			[ db.step, 'steppos', 'DESC' ]]
 	}).then(function(timelines){
 		res.render("timeline/index", {timelines: timelines});
 	}); 
