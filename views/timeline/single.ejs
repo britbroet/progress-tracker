@@ -22,7 +22,8 @@
 
 
 
-<div>
+<div class="panel panel-default">
+	<div class="panel-body">
 	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
 		
@@ -31,7 +32,6 @@
 
 
 		<li>
-		<hr>
 			<div class="editStepContainer" style="display: flex;">
 				<div style="display: flex;">
 					<div class="repositionStep verticalContainer">	
@@ -57,7 +57,7 @@
 	  			</div>
 
 			</div>
-
+			<hr>
 
 
 
@@ -69,12 +69,12 @@
 
 	</ul>
 
-<a href="/<%= timeline.id %>/share" class="btn btn-info">Share Timeline</a>
-<a href="/timeline/<%= timeline.id %>/status" class="btn btn-info">Update Status</a>
+	<div class="row text-center">
+	<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Step</a>
+</div>
+
+	</div>
+
 </div>
 
 
-<div class="row">
-	<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-primary">Add/Edit Steps</a>
-
-</div>

@@ -1,5 +1,23 @@
 $(document).ready(function(){
 
+
+// DELETE TIMELINE
+$('.delete-timeline').click(function(e) {
+  e.preventDefault();
+  var timelineId = $(this).attr('data-timeline');
+  var url = $(this).attr('href');
+  //console.log('timeline id: ' + timelineId);
+
+  $.ajax({
+    url: url,
+    method: 'DELETE'
+  }).done(function() {
+    //console.log("$(this).attr('data-timeline'): " + timeline);
+    window.location.href = '/timeline/all';
+  });
+});
+
+
 //EDIT STEP IN TIMELINE
 $(function() {
   $('.edit-form').submit(function(e) {
@@ -22,19 +40,6 @@ $(function() {
   }); //end of ajax
 });
 
-// //DELETE STEP FROM TIMELINE (using button for testing)
-//   $('.delete-btn').click(function(e) {
-//     e.preventDefault();
-//     var url = $(this).attr('href');
-
-//     $.ajax({
-//       url: url,
-//       method: 'DELETE'
-//     }).done(function() {
-//       window.location.href = '/';
-//     });
-//   });
-// });
 
 
 //CHANGE STATUS

@@ -47,6 +47,22 @@ router.post("/new", function(req, res){
 	});
 });
 
+// DELETE TIMELINE 
+router.delete("/:id/delete", function(req, res){
+	db.timeline.findById(req.params.id).then(function(timeline) {
+		if (timeline) {
+			timeline.destroy().then(function() {
+				res.send({msg: 'timeline deleted'});
+			});
+		}
+		else {
+			res.status(404).send({msg: 'error'});
+		}
+	}).catch(function(err) {
+		res.status(500).send({msg: 'error'});
+	});
+});
+
 
 // SHOW SINGLE TIMELINE
 router.get("/:id", function(req, res){
@@ -94,11 +110,6 @@ router.put('/:id/update', function(req, res) {
 });
 
 
-
-
-
-
-
 // ADD TIMELINE STEPS (view)
 router.get("/:id/addstep", function(req, res) {
 	console.log('made it');
@@ -108,26 +119,6 @@ router.get("/:id/addstep", function(req, res) {
 		res.render("timeline/addstep", {timeline: timeline});
 	});
 });
-
-
-
-//TESTING POSITION W/ DELETE BUTTON
-// router.get('/:timelineId/pos', function(req, res) {
-// 	console.log('test position firing');
-// 	db.step.findAll({
-// 		where: { timelineId: req.params.timelineId }
-// 	}).then(function(step){
-// 		console.log('step: ' + step);
-// 		var max = 0;
-// 		for (var i = 0; i < step.length; i++) {
-// 			if(step[i].steppos > max) {
-// 				max = step[i].steppos;
-// 			}
-// 		}
-// 		console.log(max);
-// 	});
-// });
-
 
 
 // ADD TIMELINE STEP (post)
