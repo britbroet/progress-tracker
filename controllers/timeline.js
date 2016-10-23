@@ -11,6 +11,7 @@ router.use(function(req, res, next) {
   next();
 });
 
+//var currentUser = 
 
 // ADD THIS TO THINGS:
 // app.get('/profile', isLoggedIn, function(req, res) {
@@ -18,12 +19,14 @@ router.use(function(req, res, next) {
 // });
 
 
-router.get('/all', function(req, res) {
+router.get('/all', isLoggedIn, function(req, res) {
 	db.timeline.findAll({
-		include: [db.step, db.user],
+		where: {userId: res.locals.currentUser.id},
+		include: [db.step, db.user], 
 		order: [['createdAt', 'DESC'],
 			[ db.step, 'steppos', 'ASC' ]]
 	}).then(function(timelines){
+		//console.log('current user: ' + res.locals.currentUser);
 		res.render("timeline/index", {timelines: timelines});
 	}); 
 });
