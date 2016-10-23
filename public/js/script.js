@@ -166,9 +166,9 @@ $('.delete-btn').click(function(e) {
 
 
 var statusView = function() {
-  $('.1').addClass('toDo');
-  $('.2').addClass('inProgress');
-  $('.3').addClass('complete');
+  $('.1').addClass('toDo').append('<div class="stepuiText">To Do</div>');
+  $('.2').addClass('inProgress').append('<div class="stepuiText">In<br>Progress</div>');
+  $('.3').addClass('complete').append('<div class="stepuiText">Complete</div>');
 }
 
 

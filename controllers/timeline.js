@@ -127,13 +127,14 @@ router.post("/:id/addstep", function(req, res){
 	db.step.findAll({
 		where: { timelineId: req.params.id }
 	}).then(function(step){
-		console.log('step: ' + step);
-		var max = 0;	
-		for (var i = 0; i < step.length; i++) {
-			if(step[i].steppos > max) {
-				max = (step[i].steppos) + 1;
-			} //end of if
-		} // end of for loop
+		//console.log('step: ' + step);
+		//var max = 0;	
+		// for (var i = 0; i < step.length; i++) {
+		// 	if(step[i].steppos > max) {
+		// 		max = (step[i].steppos) + 1;
+		// 	} //end of if
+		// } // end of for loop
+		var max = step.length;
 		console.log('max: ' + max);
 
 		db.step.create({
