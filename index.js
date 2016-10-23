@@ -119,7 +119,7 @@ app.get("/:id/shareTxt", function(req, res) {
 
       to:'+12067956807', // Any number Twilio can deliver to
       from: '+12062021353', // A number you bought from Twilio and can use for outbound communication
-      body: 'click here https://progresstracker.herokuapp.com/<%= req.params.id %>/share' // body of the SMS message
+      body: 'click here https://progresstracker.herokuapp.com/' + req.params.id + '/share' // body of the SMS message
       //mediaUrl: "https://progresstracker.herokuapp.com/1/share"
 
   }, function(err, responseData) { //this function is executed when a response is received from Twilio
