@@ -80,6 +80,17 @@ label.status {
 	margin-bottom: 5px;
 }
 
+.stepShareIconContainer {
+	display: inline-block;
+}
+
+.shareStepRow {
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 60px;
+}
+
 .stepui {
 	width: 100px;
 	height: 100px;

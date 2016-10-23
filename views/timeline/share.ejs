@@ -11,12 +11,12 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" style="max-width: 800px;">
 
 	<div class="row">
 
 		<div class="col-xs-12">
-			<h3><%= timeline.title %></h3>
+			<h1><%= timeline.title %></h1>
 		</div>
 		<div class="col-xs-12">
 			<h4><%= timeline.description %></h4>
@@ -26,18 +26,21 @@
 	<hr>
 
 	<div>
-		<ul class="list-unstyled">
-			<% timeline.steps.forEach(function(step){ %>
-			
-			<div id="<%= step.id %>" class="stepui <%= step.status %>"></div>
 
-			<li>
-				<strong><%= step.stepname %></strong>
-				<%= step.stepdesc %>  	
-			</li>
-			<%	});	%>
+		<% timeline.steps.forEach(function(step){ %>
 
-		</ul>
+			<div class="shareStepRow">
+				<div class="stepShareIconContainer">
+					<h3><%= step.stepname %></h3>
+					<%= step.stepdesc %> 
+				</div>
+
+				<div class="stepShareIconContainer">	
+					<div id="<%= step.id %>" class="stepui <%= step.status %>"></div>
+				</div>
+			</div>
+
+		<%	});	%>
 	</div>
 </div>
 
