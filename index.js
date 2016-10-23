@@ -7,20 +7,12 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 //var ConnectRoles = require('connect-roles');
+var expressJWT = require('express-jwt');
+var jwt = require('jsonwebtoken');
+var User = require('./models/user');
 require("dotenv").config();
 var app = express();
 var db = require("./models");
-// var jQuery = require("jsdom").env("", function(err, window) {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }
- 
-//     var $ = require("jquery")(window);
-// });
-
-// var bootstrap = require('bootstrap');
-
 
 // Twilio Credentials 
 var accountSid = 'ACfe27178453fac5de70e7b6281c181618'; 
@@ -31,7 +23,15 @@ var client = require('twilio')(accountSid, authToken);
 
 // Mount middleware to notify Twilio of errors
 //app.use(twilioNotifications.notifyOnError);
- 
+
+var secret = "mysupersecretpassword";
+
+app.use('/api/users', expressJWT({secret: secret}).unless({method: 'POST'}));
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send({message: 'You need an authorization token to view this information.'})
+  }
+});
 
 app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
@@ -52,6 +52,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+
+
+
 app.get('/', function(req, res) {
   res.render('index');
 });
@@ -71,6 +75,23 @@ app.get("/:id/share", function(req, res){
 	}).then(function(timeline){
 		res.render("timeline/share", {layout: false, timeline: timeline});
 	});
+});
+
+// USER TOKEN
+
+app.post('/api/auth', function(req, res) {
+  // some code to check that a user's credentials are right #bcryptmaybe?
+  // collect any information we want to include in the token, like that user's info
+  db.user.findOne({email: req.body.email}, function(err, user) {
+    if (err || !user) return res.send({message: 'User not found'});
+    user.authenticated(req.body.password, function(err, result) {
+      if (err || !result) return res.send({message: 'User not authenticated'}
+      	);
+      // make a token & send it as JSON
+      var token = jwt.sign(user, secret);
+      res.send({user: user, token: token});
+    });
+  });
 });
 
 
