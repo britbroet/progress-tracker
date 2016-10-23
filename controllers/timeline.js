@@ -250,6 +250,20 @@ router.put('/:id/editinfo', function(req, res) {
 });
 
 
+// SHARE TIMELINE FORM
+
+router.get("/:id/shareForm", function(req, res){
+	console.log('redirected to show timeline form - req.params.id = ' + req.params.id);
+	db.timeline.find({
+		where: {id: req.params.id},
+		include: [db.step, db.user],
+		order: '"steps.steppos" ASC'
+	}).then(function(timeline){
+		res.render("timeline/shareForm", {timeline: timeline});
+	});
+});
+
+
 
 
 // // TESTING POSITION W/ DELETE BUTTON

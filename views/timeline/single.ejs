@@ -14,22 +14,16 @@
 	</div>
 
 	<div class="col-xs-12">
-		<h4><%= timeline.description %></h4>
+		<h4><a href="/timeline/<%= timeline.id %>/shareForm"><%= timeline.description %></a></h4>
 	</div>
-
 		
 </div>
-
 
 
 <div class="panel panel-default">
 	<div class="panel-body">
 	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
-		
-
-
-
 
 		<li>
 			<div class="editStepContainer" style="display: flex;">
@@ -45,7 +39,7 @@
 					</div>
 
 					<div class="verticalContainer" style="padding-bottom: 5px;">
-						<div class="stepTitle"><strong><%= step.stepname %></strong></div>
+						<div class="stepTitle"><%= step.stepname %></div>
 						<div class="stepDesc"><%= step.stepdesc %></div>
 					</div>
 				</div>

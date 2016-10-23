@@ -110,25 +110,34 @@ app.post('/api/auth', function(req, res) {
 
 
 // Send an SMS text message
-//  client.sendMessage({
 
-//     to:'+12067956807', // Any number Twilio can deliver to
-//     from: '+12062021353', // A number you bought from Twilio and can use for outbound communication
-//     body: 'ITS ALIVE!!!!!!! OMFG IM SO EXCITED FOR TACOS.' // body of the SMS message
+app.get("/:id/shareTxt", function(req, res) {
 
-// }, function(err, responseData) { //this function is executed when a response is received from Twilio
+  console.log('req.params.id: ' + req.params.id);
+  // console.log('click ' + '<a href="http://www.google.com">' + 'THIS' + '</a>' + 'to access');
+   client.sendMessage({
 
-//     if (!err) { // "err" is an error received during the request, if any
+      to:'+12067956807', // Any number Twilio can deliver to
+      from: '+12062021353', // A number you bought from Twilio and can use for outbound communication
+      body: 'click here https://progresstracker.herokuapp.com/1/share' // body of the SMS message
 
-//         // "responseData" is a JavaScript object containing data received from Twilio.
-//         // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
-//         // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+  }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-//         console.log(responseData.from); // outputs "+14506667788"
-//         console.log(responseData.body); // outputs "word to your mother."
+      if (!err) { // "err" is an error received during the request, if any
 
-//     }
-// });
+          // "responseData" is a JavaScript object containing data received from Twilio.
+          // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
+          // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+
+          console.log(responseData.from); // outputs "+14506667788"
+          console.log(responseData.body); // outputs "word to your mother."
+
+      }
+  // }).then(function(err, responseData){
+  //   res.send(responseData);
+  });
+
+});
 
 
 
