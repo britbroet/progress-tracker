@@ -22,7 +22,7 @@ router.get('/all', function(req, res) {
 	db.timeline.findAll({
 		include: [db.step, db.user],
 		order: [['createdAt', 'DESC'],
-			[ db.step, 'steppos', 'DESC' ]]
+			[ db.step, 'steppos', 'ASC' ]]
 	}).then(function(timelines){
 		res.render("timeline/index", {timelines: timelines});
 	}); 

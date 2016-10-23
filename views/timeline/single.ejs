@@ -2,35 +2,68 @@
 
 <div class="row">
 
-	<div class="col-xs-12">
-		<h3><%= timeline.title %></h3>
+	<div class="col-xs-12" style="display: flex; justify-content: space-between;">
+		<div style="display: flex;">
+			<h3><%= timeline.title %></h3> 
+		</div>
+		<div class="verticalContainer" style="flex-direction: row;">
+			<a href="/timeline/<%= timeline.id %>/editinfo" class="btn btn-info glyphicon glyphicon-edit" style="margin-right: 10px;"></a> 
+
+  			<a href="#DELETE" data-timeline="<%= timeline.id %>" class="btn btn-danger  delete-btn glyphicon glyphicon-trash"></a>
+  		</div>
 	</div>
+
 	<div class="col-xs-12">
 		<h4><%= timeline.description %></h4>
 	</div>
-	<a href="/timeline/<%= timeline.id %>/editinfo" class="btn btn-info glyphicon glyphicon-edit"></a> 
+
+		
 </div>
 
-<hr>
+
 
 <div>
 	<ul class="list-unstyled">
 		<% timeline.steps.forEach(function(step){ %>
+		
+
+
+
+
 		<li>
-			<a href="<%= timeline.id %>/<%= step.id %>/stepup" class="reorder-up"> 
-				<span class="glyphicon glyphicon-arrow-up"></span>
-			</a>
+		<hr>
+			<div class="editStepContainer" style="display: flex;">
+				<div style="display: flex;">
+					<div class="repositionStep verticalContainer">	
+						<a href="<%= timeline.id %>/<%= step.id %>/stepup" class="reorder-up" style="display: block;"> 
+							<span class="glyphicon glyphicon-arrow-up"></span>
+						</a>
+						</br>
+						<a href="<%= timeline.id %>/<%= step.id %>/stepdown" class="reorder-down" style="display: block;">
+							<span class="glyphicon glyphicon-arrow-down"></span>
+						</a>
+					</div>
 
-			<a href="<%= timeline.id %>/<%= step.id %>/stepdown" class="reorder-down">
-				<span class="glyphicon glyphicon-arrow-down"></span>
-			</a>
+					<div class="verticalContainer" style="padding-bottom: 5px;">
+						<div class="stepTitle"><strong><%= step.stepname %></strong></div>
+						<div class="stepDesc"><%= step.stepdesc %></div>
+					</div>
+				</div>
 
-			<strong><%= step.stepname %></strong>
-			<%= step.stepdesc %>  	
-			
-			<a href="/timeline/<%= step.id %>/edit" class="btn btn-info glyphicon glyphicon-edit"></a> 
+				<div class="verticalContainer" style="flex-direction: row;">
+					<a href="/timeline/<%= step.id %>/edit" class="btn btn-info glyphicon glyphicon-edit" style="margin-right: 10px;"></a> 
 
-  			<a href="/timeline/<%= timeline.id %>/<%= step.id %>/delete" data-timeline="<%= timeline.id %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn"></a>
+	  				<a href="/timeline/<%= timeline.id %>/<%= step.id %>/delete" data-timeline="<%= timeline.id %>" class="btn btn-danger  delete-btn glyphicon glyphicon-trash"></a>
+	  			</div>
+
+			</div>
+
+
+
+
+
+
+
 		</li>
 		<%	});	%>
 

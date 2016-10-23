@@ -23,13 +23,31 @@ label.status {
 	padding-top: 5px;
 }
 
+.editStepContainer {
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.verticalContainer {
+	display: flex; 
+	position: relative; 
+	align-self: center; 
+	flex-direction: column;
+}
+
+.repositionStep {
+	margin-right: 40px;
+	display: inline-block;
+} 
 
 
 .updateContainer {
-	min-height: 200px;
+	display: none;
+/*	min-height: 200px;
 	display: none;
 	padding-left: 50px;
-	padding-top: 20px;
+	padding-top: 20px;*/
 	/*//background-color: #efefef;*/
 }
 
@@ -47,14 +65,13 @@ label.status {
 
 
 .stepContainer {
-	margin-bottom: 20px;
-	//background-color: #efefef;
-	padding-left: 20px;
+    margin-bottom: 10px;
+    padding: 0 50px;
 }
 
 .stepTitle {
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 20px;
+	margin-bottom: 5px;
 }
 
 .stepui {

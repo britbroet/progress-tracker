@@ -64,9 +64,13 @@ $(function() {
 
 //MOVE STEP UP IN TIMELINE (change order of steps)
 $(".reorder-up").click(function(){
+  console.log('firing');
   var $current = $(this).closest('li');
   var $previous = $current.prev('li');
   var index = $current.index();
+  console.log($current);
+  console.log($previous);
+  console.log('index: ' + index);
   if($previous.length !== 0){
       $current.insertBefore($previous);
       var newIndex = index - 1;
