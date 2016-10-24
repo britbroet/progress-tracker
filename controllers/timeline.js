@@ -52,7 +52,7 @@ router.delete("/:id/delete", function(req, res){
 	db.timeline.findById(req.params.id).then(function(timeline) {
 		if (timeline) {
 			timeline.destroy().then(function() {
-				res.send({msg: 'timeline deleted'});
+				res.render("timeline/index");
 			});
 		}
 		else {
