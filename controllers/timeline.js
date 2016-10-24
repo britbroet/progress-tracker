@@ -223,11 +223,13 @@ router.get('/:id/editinfo', function(req, res) {
   db.timeline.findById(req.params.id).then(function(timeline) {
   	console.log('edit timeline info route works!');
     if (timeline) {
+    	console.log('if timeline apparnetly true');
       res.render('timeline/editinfo', {timeline: timeline});
     } else {
       res.status(404).render('error');
     }
   }).catch(function(err) {
+  	console.log('if timeline false');
     res.status(500).render('error');
   });
 });
