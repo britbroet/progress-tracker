@@ -89,11 +89,7 @@ router.get("/:id/status", function(req, res){
 });
 
 
-
-
 // UPATE TIMELINE STATUS (post)
-
-//     /timeline/<%= timeline.id %>/update
 
 router.put('/:id/update', function(req, res) {
   db.step.findById(req.params.id).then(function(step) {
@@ -141,7 +137,8 @@ router.post("/:id/addstep", function(req, res){
 			timelineId: req.params.id,
 			stepname: req.body.stepName,
 			stepdesc: req.body.stepDesc,
-			steppos: max
+			steppos: max,
+			status: 1
 		})
 	}) 
 	.then(function(timeline){ //<-- returning new timeline created
@@ -262,6 +259,10 @@ router.get("/:id/shareForm", function(req, res){
 		res.render("timeline/shareForm", {timeline: timeline});
 	});
 });
+
+// SHARE ROUTE (send text)
+
+
 
 
 

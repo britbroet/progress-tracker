@@ -1,21 +1,19 @@
-<h2>Add/edit steps for timeline here</h2>
+<h2 style="color: #ffffff; font-weight: 300;">Add step to <%= timeline.title %></h2>
 
-<h5>Display timeline here</h5>
+<div style="background-color: #fff; padding: 30px;">
+	<form action="/timeline/<%= timeline.id %>/addstep" method="POST">
+	  <div class="form-group">
+	    <label for="stepName" class="form-label">New Step</label>
+	    <input id="stepName" class="form-control" type="text" placeholder='example: "mow lawn"'  name="stepName">
+	  </div>
 
-<%= timeline.title %>
-<%= timeline.description %>
-
-<form action="/timeline/<%= timeline.id %>/addstep" method="POST">
-  <div class="form-group">
-    <label for="stepName">New Step</label>
-    <input id="stepName" class="form-control" type="text" placeholder='example: "mow lawn"'  name="stepName">
-  </div>
-
-  <div class="form-group">
-    <label for="stepDesc">Description of New Step</label>
-    <input id="stepDesc" class="form-control" type="text" placeholder='example: "use a lawn mower to make the grass shorter"' name="stepDesc">
-  </div>
+	  <div class="form-group">
+	    <label for="stepDesc" class="form-label">Description of New Step</label>
+	    <input id="stepDesc" class="form-control" type="text" placeholder='example: "use a lawn mower to make the grass shorter"' name="stepDesc">
+	  </div>
 
 
-  <input class="btn btn-primary" type="submit" value="Add new step">
-</form>
+	  <input class="btn btn-info" type="submit" value="Add new step">
+	  <a href="/timeline/<%= timeline.id %>" class="btn btn-warning">Cancel</a>
+	</form>
+</div>

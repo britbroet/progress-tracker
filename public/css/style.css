@@ -87,6 +87,12 @@ h2.timeline-title {
     font-size: 16px;
 }
 
+.form-label {
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
 input[type=radio] {
     margin: 0 auto !important;
     display: block !important;
@@ -233,6 +239,7 @@ label.status {
 	background-color: #333;
 	height: 60px;
 	width: 100%;
+	margin-bottom: 20px;
 }
 
 .headContainer {
