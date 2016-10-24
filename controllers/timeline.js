@@ -235,7 +235,7 @@ router.get('/:id/editinfo', function(req, res) {
 });
 
 //EDIT TIMELINE INFO (put route to update individual timeline title/description)
-router.put('/:id/editinfo', function(req, res) {
+router.put('/:id/editinfodone', function(req, res) {
   db.timeline.findById(req.params.id).then(function(timeline) {
     if (timeline) {
       timeline.updateAttributes(req.body).then(function() {
