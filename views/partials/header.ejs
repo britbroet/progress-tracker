@@ -12,6 +12,8 @@
 			<% if (currentUser) { %> 
 
 				<div class="loggedIn header">
+					<a href="/timeline/all" class="btn btn-info" style="margin: 0 10px;">See All</a>
+					<a href="/timeline/new" class="btn btn-info" style="margin: 0 10px 0 0;">+ Create New</a>
 					Logged in as <span style="font-weight: 400;"><%= currentUser.name %></span>
 				</div>
 
