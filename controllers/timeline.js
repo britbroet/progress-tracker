@@ -219,6 +219,7 @@ router.delete('/:timelineId/:id/delete', function(req, res) {
 
 // EDIT TIMELINE INFO (title/description) (get)
 router.get('/:id/editinfo', function(req, res) {
+	console.log('edit timeline info route works???');
   db.timeline.findById(req.params.id).then(function(timeline) {
   	console.log('edit timeline info route works!');
     if (timeline) {
