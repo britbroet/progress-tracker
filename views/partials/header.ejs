@@ -8,13 +8,22 @@
 
 			<div class="loginContainer">
 			</div>
-			
-			<div class="loggedIn header">
-				Logged in as <span style="font-weight: 400;"><%= currentUser.name %></span>
-			</div>
+
+			<% if (currentUser) { %> 
+
+				<div class="loggedIn header">
+					Logged in as <span style="font-weight: 400;"><%= currentUser.name %></span>
+				</div>
+
+			<% } %>
+
+			<% if (!currentUser) { %> 
+				<div class="loggedIn header">
+					<a href="/auth/login" class="btn btn-info">Log in</a>
+				</div>
+			<% } %>
 
 		</div>
-
 	</div>
-
 </div>
+

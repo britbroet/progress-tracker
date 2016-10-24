@@ -223,6 +223,11 @@ $(function() {
 
 
 
+// LOGIN STUFF
+
+// if (!currentUser) {
+//   $('.loggedIn header').hide();
+// }
 
 
 

@@ -57,7 +57,8 @@ app.use(function(req, res, next) {
 
 
 app.get('/', function(req, res) {
-  res.render('index');
+  // console.log(currentUser);
+  res.redirect('timeline/all');
 });
 
 app.get('/profile', isLoggedIn, function(req, res) {
