@@ -64,6 +64,7 @@ router.delete("/:id/delete", function(req, res){
 });
 
 
+
 // SHOW SINGLE TIMELINE
 router.get("/:id", function(req, res){
 	console.log('redirected to show single timeline - req.params.id = ' + req.params.id);
@@ -235,28 +236,8 @@ router.get('/:id/editinfo', function(req, res) {
 });
 
 
-
-// // EDIT TIMELINE INFO (title/description) (get)
-// router.get('/:id/edit', function(req, res) {
-// 	//console.log('edit timeline info route works???');
-//   db.timeline.findById(req.params.id).then(function(timeline) {
-//   	//console.log('edit timeline info route works!');
-
-//       res.render("timeline/editInfo", {timeline: timeline});
-    
-//   // }).catch(function(err) {
-//   // 	console.log('if timeline false');
-//   //   res.status(500).render('error');
-//   });
-// });
-
-
-
-
-
-
 //EDIT TIMELINE INFO (put route to update individual timeline title/description)
-router.put('/:id/editinfodone', function(req, res) {
+router.put('/:id/editinfo', function(req, res) {
   db.timeline.findById(req.params.id).then(function(timeline) {
     if (timeline) {
       timeline.updateAttributes(req.body).then(function() {

@@ -12,10 +12,31 @@ $('.delete-timeline').click(function(e) {
     url: url,
     method: 'DELETE'
   }).done(function() {
-    //console.log("$(this).attr('data-timeline'): " + timeline);
+    console.log("HERE: $(this).attr('data-timeline'): " + timeline);
     window.location.href = '/timeline/all';
   });
 });
+
+
+// // DELETE STEP
+
+// $('.delete-btn').click(function(e) {
+//   e.preventDefault();
+//   var url = $(this).attr('href');
+//   var timeline = $(this).attr('data-timeline');
+
+//   $.ajax({
+//     url: url,
+//     method: 'DELETE'
+//   }).done(function() {
+//     console.log("$(this).attr('data-timeline'): " + timeline);
+//     window.location.href = '/timeline/' + timeline;
+//   });
+// });
+
+
+
+
 
 
 //EDIT STEP IN TIMELINE
