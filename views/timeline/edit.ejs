@@ -1,17 +1,21 @@
-<h2>Edit Step</h2>
+<h3 class="page-title">Edit step</h3>
 
-<form action="/timeline/<%= step.timelineId %>/<%= step.id %>/edit" class="edit-form" role="form">
-  <div class="form-group">
-    <label for="stepname">Step Name</label>
-    <input type="text" class="form-control" id="stepname" placeholder="Step name" name="stepname" value="<%= step.stepname %>">
-  </div>
-  <div class="form-group">
-    <label for="stepdesc">Step Description</label>
-    <input type="text" class="form-control" id="stepdesc" placeholder="Description of step" name="stepdesc" value="<%= step.stepdesc %>">
-  </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div style="background-color: #fff; padding: 30px;">
+	<form action="/timeline/<%= step.timelineId %>/<%= step.id %>/edit" class="edit-form" role="form">
+	  <div class="form-group">
+	    <label for="stepname" class="form-label">Step Name</label>
+	    <input type="text" class="form-control" id="stepname" placeholder="Step name" name="stepname" value="<%= step.stepname %>">
+	  </div>
+	  <div class="form-group">
+	    <label for="stepdesc" class="form-label">Step Description</label>
+	    <input type="text" class="form-control" id="stepdesc" placeholder="Description of step" name="stepdesc" value="<%= step.stepdesc %>">
+	  </div>
 
-<a href="/timeline/<%= step.timelineId %>">&larr; Back</a>
+	  <button type="submit" class="btn btn-primary">Save</button>
+	  <a href="/timeline/<%= step.timelineId %>" class="btn btn-warning">Cancel</a>
+	</form>
+</div>
+
+
 

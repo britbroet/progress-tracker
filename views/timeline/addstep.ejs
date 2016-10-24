@@ -1,14 +1,14 @@
-<h2 style="color: #ffffff; font-weight: 300;">Add step to <%= timeline.title %></h2>
+<h3 class="page-title">Add step to <span style="color: #9fd148;"> <%= timeline.title %> </span></h3>
 
 <div style="background-color: #fff; padding: 30px;">
 	<form action="/timeline/<%= timeline.id %>/addstep" method="POST">
 	  <div class="form-group">
-	    <label for="stepName" class="form-label">New Step</label>
+	    <label for="stepName" class="form-label">New step</label>
 	    <input id="stepName" class="form-control" type="text" placeholder='example: "mow lawn"'  name="stepName">
 	  </div>
 
 	  <div class="form-group">
-	    <label for="stepDesc" class="form-label">Description of New Step</label>
+	    <label for="stepDesc" class="form-label">Description of new step</label>
 	    <input id="stepDesc" class="form-control" type="text" placeholder='example: "use a lawn mower to make the grass shorter"' name="stepDesc">
 	  </div>
 

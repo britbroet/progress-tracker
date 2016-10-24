@@ -15,8 +15,9 @@ h1, h2, h3 {
 
 h3.page-title {
 	color: #fff;
-	padding: 10px;
+	padding: 10px 0;
 	font-weight: 300;
+	margin-bottom: 20px;
 }
 
 
@@ -32,6 +33,18 @@ h3.page-title {
 
 .panel {
 	border-radius: 0px !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #86b824 !important;
+    border-color: #86b824 !important;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6c9e15 !important;
+    border-color: #6c9e15 !important;
 }
 
 

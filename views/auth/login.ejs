@@ -1,3 +1,5 @@
+<h3 class="page-title">Log into your account</h3>
+
 <form action="/auth/login" method="POST">
   <div class="form-group">
     <label for="authEmail" class="edit-timeline-form-label">Email</label>
@@ -9,5 +11,9 @@
     <input id="authPassword" class="form-control" type="password" name="password">
   </div>
 
-  <input class="btn btn-primary" type="submit">
+  <input class="btn btn-primary" type="submit" value="Log in">
 </form>
+
+<div style="margin-top: 30px;">	
+	<h4 style="color: #fff;" class="text-center">Don't have an account? <a href="/auth/signup" style="color: #5bc0de; font-weight: 500;">Sign up here!</a></h4>
+</div>

@@ -1,3 +1,4 @@
+<h3 class="page-title">Edit timeline</span></h3>
 
 
 <div class="row">
@@ -9,12 +10,12 @@
 		<div class="verticalContainer" style="flex-direction: row;">
 			<a href="/timeline/<%= timeline.id %>/editinfo" class="btn btn-info glyphicon glyphicon-edit" style="margin-right: 10px;"></a> 
 
-  			<a href="#DELETE" data-timeline="<%= timeline.id %>" class="btn btn-danger  delete-btn glyphicon glyphicon-trash"></a>
+  			<a href="/timeline/<%= timeline.id %>/delete" data-timeline="<%= timeline.id %>" class="btn btn-danger delete-btn glyphicon glyphicon-trash"></a>
   		</div>
 	</div>
 
 	<div class="col-xs-12" style="color: #fff; margin-bottom: 10px;">
-		<h4><%= timeline.description %></h4>
+		<h5><%= timeline.description %></h5>
 	</div>
 		
 </div>
@@ -64,11 +65,15 @@
 	</ul>
 
 	<div class="row text-center">
-	<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Step</a>
-</div>
+		<a href="/timeline/<%= timeline.id %>/addstep" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Step</a>
+	</div>
 
 	</div>
 
 </div>
+ 
+	<div class="row" style="padding-left: 15px;">
+		<a href="/timeline/all" class="btn btn-primary" ">Done</a>
+	</div>
 
 
