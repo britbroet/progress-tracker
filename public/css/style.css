@@ -1,37 +1,72 @@
+body {
+	background-color: #444 !important;
+}
+
 body, h4, h5 {
 	font-family: 'Heebo', sans-serif !important;
 	font-weight: 300 !important;	
 }
 
 h1, h2, h3 {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Oswald', sans-serif !important;
+	/*font-weight: 300 !important;*/
+	/*color: #fff;*/
+}
+
+h3.page-title {
+	color: #fff;
+	padding: 10px;
 	font-weight: 300;
 }
 
-.header {
-	font-family: 'Oswald', sans-serif;
-	font-weight: 400;
+
+
+
+
+/*BOOTSTRAP OVERWRITE*/
+
+.btn {
+	padding: 4px 8px !important;
+	border-radius: 0px !important;
 }
 
-.logo {
-	font-family: 'Oswald', sans-serif;
-	font-size: 24px;
-	font-weight: 500;
-	display: inline-block;
-	float: left;
+.panel {
+	border-radius: 0px !important;
 }
 
-.loggedIn {
-	font-weight: 300;
-	float: right;
-}
 
-.logIn {
-	float: right;
-}
+
+
 
 .check {
 	color: #9fd148;
+}
+
+
+
+
+
+h2.timeline-title {
+	text-transform: uppercase;
+	color: #9fd148;
+	line-height: 30px;
+    margin: auto;
+    font-weight: 500;
+}
+
+/*.timelineInfoAll {
+	padding: 10px 0 0 40px;
+}*/
+
+.timeline-info {
+	padding: 10px 0 0 40px !important;
+}
+
+.timelineButtonContainer {
+	justify-content: space-around;
+    display: flex;
+    margin: 0 auto 10px auto;
+    width: 120px;
 }
 
 
@@ -45,6 +80,16 @@ h1, h2, h3 {
     margin: 4px 5px 0 0 !important;
     line-height: normal;
 }*/
+
+.edit-timeline-form {
+	padding: 50px;
+}
+
+.edit-timeline-form-label {
+	font-weight: 400;
+    color: #fff;
+    font-size: 16px;
+}
 
 input[type=radio] {
     margin: 0 auto !important;
@@ -110,17 +155,24 @@ label.status {
 .stepTitle {
 	font-size: 20px;
 	margin-bottom: 5px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 500;
+}
+
+.shareDescription {
+	color: #fff;
 }
 
 .stepShareIconContainer {
 	display: inline-block;
+	margin-right: 40px;
 }
 
 .shareStepRow {
 	display: flex;
     width: 100%;
-    justify-content: space-between;
-    padding: 10px 60px;
+/*    justify-content: space-between;*/
+    padding: 10px 30px;
 }
 
 .stepui {
@@ -142,6 +194,16 @@ label.status {
 	font-size: 16px;
 	line-height: 16px;
 	font-weight: 500;
+}
+
+.viewer-page {
+	max-width: 800px;
+	padding: 30px;
+}
+
+.viewer-status-container {
+	background-color: #fff;
+	padding: 20px 0;
 }
 
 .toDo {
@@ -168,7 +230,46 @@ label.status {
 	padding: 30px;
 }
 
+/*HEADER*/
 
+.headRow {
+	background-color: #333;
+	height: 60px;
+	width: 100%;
+}
+
+.headContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.header {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	color: #fff;
+}
+
+.logo {
+	font-family: 'Oswald', sans-serif;
+	font-size: 36px;
+	font-weight: 500;
+	display: inline-block;
+	float: left;
+	color: #fff;
+}
+
+.loggedIn {
+	font-weight: 300;
+	float: right;
+}
+
+.logIn {
+	float: right;
+}
 
 
 @media (max-width: 386px) {
@@ -177,6 +278,15 @@ label.status {
 	    margin-top: 1px\9;
 	    line-height: normal;
 	    display: block;
+	}
+}
+
+@media (max-width: 770px) {
+	.timeline-info {
+		text-align: center;
+	}
+	.headContainer {
+		padding: 5px 20px;
 	}
 }
 

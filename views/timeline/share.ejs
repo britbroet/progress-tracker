@@ -8,39 +8,45 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
 
 </head>
 <body>
-<div class="container" style="max-width: 800px;">
+<div class="viewer-page">
 
 	<div class="row">
 
 		<div class="col-xs-12">
-			<h1><%= timeline.title %></h1>
+			<h2 class="timeline-title"><%= timeline.title %></h2>
 		</div>
 		<div class="col-xs-12">
-			<h4><%= timeline.description %></h4>
+			<h4 class="shareDescription"><%= timeline.description %></h4>
 		</div>
 	</div>
 
-	<hr>
+	<div class="viewer-status-container">
 
-	<div>
+		<div>
+			<% timeline.steps.forEach(function(step){ %>
 
-		<% timeline.steps.forEach(function(step){ %>
+				<div class="shareStepRow">
 
-			<div class="shareStepRow">
-				<div class="stepShareIconContainer">
-					<h3><%= step.stepname %></h3>
-					<%= step.stepdesc %> 
+
+					<div class="stepShareIconContainer">	
+						<div id="<%= step.id %>" class="stepui <%= step.status %>"></div>
+					</div>
+
+					<div>
+						<div class="stepTitle" style="padding-top: 10px;"><%= step.stepname %></div>
+						<%= step.stepdesc %> 
+					</div>
+
 				</div>
 
-				<div class="stepShareIconContainer">	
-					<div id="<%= step.id %>" class="stepui <%= step.status %>"></div>
-				</div>
-			</div>
+			<%	});	%>
+		</div>
 
-		<%	});	%>
 	</div>
 </div>
 
