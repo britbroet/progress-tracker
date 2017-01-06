@@ -4,6 +4,19 @@
 <% if (timelines.length == 0) { %> <div class="text-center" style="background-color: #fff; padding: 30px;"><h4 style="color: #333; margin-top: 0px;">Looks like you don't have any timelines...</h4> <br> <a href="/timeline/new" class="btn btn-primary" style="margin: 0 10px 0 0; font-family: 'Heebo', sans-serif;">+ Create New Timeline</a></div> <% } %>
 
 
+<!-- The Modal -->
+<div id="text_modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal_content">
+    <span class="close_modal">&times;</span>
+    <h2>What does this button do?</h2>
+    <p>This button uses the Twillio API to send out a text message with a link to your current progress.</p>
+  </div>
+
+</div>
+
+
 <% timelines.forEach(function(timeline) { %>
 
 	<div class="panel panel-default">
@@ -31,9 +44,9 @@
 		  				<div class="timelineButtonContainer">
 							<a href="/timeline/<%= timeline.id %>" class="btn btn-info glyphicon glyphicon-edit"></a> 
 
-		  					<a href="/<%= timeline.id %>/shareTxt" class="btn btn-warning glyphicon glyphicon-envelope"></a>
+		  					<button id="modal_btn" class="btn btn-warning glyphicon glyphicon-envelope"></button>
 
-		  					<a href="/timeline/<%= timeline.id %>/delete" data-timeline="<%= timeline.id %>" class="btn btn-danger  delete-timeline glyphicon glyphicon-trash"></a>
+		  					<a title="delete" href="/timeline/<%= timeline.id %>/delete" data-timeline="<%= timeline.id %>" class="btn btn-danger  delete-timeline glyphicon glyphicon-trash"></a>
 		  				</div>
 
 		  				<div>

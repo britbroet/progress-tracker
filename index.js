@@ -134,10 +134,9 @@ app.get("/:id/shareTxt", function(req, res) {
           console.log(responseData.from); // outputs "+14506667788"
           console.log(responseData.body); // outputs "word to your mother."
 
-
+          res.send(true);
       } // end of if
-
-
+      res.send(false);
   }); // end of error/response
 
 

@@ -112,8 +112,7 @@ $(".reorder-up").click(function(){
         method: 'PUT',
         data: 'steppos=' + newIndex
       }).done(function(resultData) {
-        alert("position updated");
-        //window.location.href = '/';
+        console.log('position updated');
       });
   }
   return false;
@@ -139,8 +138,7 @@ $(".reorder-down").click(function(){
         method: 'PUT',
         data: 'steppos=' + newIndex
       }).done(function(resultData) {
-        alert("position updated");
-        //window.reload();
+        console.log('position updated');
       });
   }
   return false;
@@ -241,6 +239,37 @@ $(function() {
         $('#retract' + thisid).hide();
         $('#expand' + thisid).show();
     });
+
+
+
+// POPUP FOR TEXT DEMO
+
+
+$('#modal_btn').click(function(){
+  $('#text_modal').css("display", "block");
+});
+
+
+// When the user clicks on <span> (x), close the modal
+$('.close_modal').click(function(){
+    $('#text_modal').css("display", "none");
+});
+
+// When the user clicks anywhere outside of the modal, close it
+
+// $(document).click(function(event){
+//   console.log('this: ', this);
+//   if (this != $('#modal_btn')) {
+//     $('#text_modal').css("display", "none");
+//   }
+// });
+
+
+// $(document).click(function(e) {
+//       if (!$(e.target).parents().andSelf().is('#popup')) {
+//             disablePopup();
+//       }
+// });
 
 
 
