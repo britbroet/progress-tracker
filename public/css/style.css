@@ -313,7 +313,18 @@ label.status {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.mobile_demo {
+	margin: 70px 0 10px 30px;
+}
+
 /* The Close Button */
+.close_modal_text {
+	color: #9fd148 !important;
+	float: none !important;
+	font-weight: normal !important;
+	font-size: 22px !important;
+}
+
 .close_modal {
     color: #aaa;
     float: right;
@@ -322,8 +333,10 @@ label.status {
 }
 
 .close_modal:hover,
-.close_modal:focus {
-    color: black;
+.close_modal:focus,
+.close_modal_text:focus,
+.close_modal_text:hover {
+    color: black !important;
     text-decoration: none;
     cursor: pointer;
 }
