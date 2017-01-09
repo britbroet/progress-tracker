@@ -245,7 +245,7 @@ $(function() {
 // POPUP FOR TEXT DEMO
 
 
-$('#modal_btn').click(function(){
+$('.modal_btn').click(function(){
   $('#text_modal').css("display", "block");
 });
 
