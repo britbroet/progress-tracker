@@ -12,7 +12,7 @@ $('.delete-timeline').click(function(e) {
     url: url,
     method: 'DELETE'
   }).done(function() {
-    console.log("HERE: $(this).attr('data-timeline'): " + timeline);
+    //console.log("HERE: $(this).attr('data-timeline'): " + timeline);
     window.location.href = '/timeline/all';
   });
 });

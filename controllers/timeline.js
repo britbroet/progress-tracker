@@ -49,10 +49,11 @@ router.post("/new", function(req, res){
 
 // DELETE TIMELINE 
 router.delete("/:id/delete", function(req, res){
+	console.log('in delete timeline controller');
 	db.timeline.findById(req.params.id).then(function(timeline) {
 		if (timeline) {
 			timeline.destroy().then(function() {
-				res.render("timeline/index");
+				res.send({msg: 'timeline deleted'});
 			});
 		}
 		else {

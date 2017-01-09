@@ -1,35 +1,32 @@
 <h3 class="page-title">Your Timelines</h3>
 
+	<!-- The Modal -->
+	<div id="text_modal" class="modal">
 
-<% if (timelines.length == 0) { %> <div class="text-center" style="background-color: #fff; padding: 30px;"><h4 style="color: #333; margin-top: 0px;">Looks like you don't have any timelines...</h4> <br> <a href="/timeline/new" class="btn btn-primary" style="margin: 0 10px 0 0; font-family: 'Heebo', sans-serif;">+ Create New Timeline</a></div> <% } %>
-
-
-<!-- The Modal -->
-<div id="text_modal" class="modal">
-
-	<!-- Modal content -->
-	<div class="modal_content">
-    	<div class="row">
-    		<div class="col-xs-12">
-    			<span class="close_modal">&times;</span>
-    		</div>
-    	</div>
-	    	<h2 style="margin-bottom: 20px;">What does this button do?</h2>
+		<!-- Modal content -->
+		<div class="modal_content">
 	    	<div class="row">
-	    		<div class="col-xs-12 col-sm-6">
-					<p style="padding-top: 20px;">This button uses the Twillio API to send out a text message with a link to your current progress (right).</p> 
-					<p>By following the link in the text, the user gets to this view. Once the user has the link, they can check it at any time to see if progress has been updated and/or timeline manager can send more text alerts to notify of an update.</p>
-	    			<h3 class="close_modal close_modal_text">Got it, thanks!</h3>
-	    		</div>
-	    		<div class="hidden-xs col-sm-6">
-	    			<img src="/img/mobile-iphone5.jpg" class="mobile_demo">
+	    		<div class="col-xs-12">
+	    			<span class="close_modal">&times;</span>
 	    		</div>
 	    	</div>
-	    </div>
-  	</div>
+		    	<h2 style="margin-bottom: 20px;">What does this button do?</h2>
+		    	<div class="row">
+		    		<div class="col-xs-12 col-sm-6">
+						<p style="padding-top: 20px;">This button uses the Twillio API to send out a text message with a link to your current progress (right).</p> 
+						<p>By following the link in the text, the user gets to this view. Once the user has the link, they can check it at any time to see if progress has been updated and/or timeline manager can send more text alerts to notify of an update.</p>
+		    			<h3 class="close_modal close_modal_text">Got it, thanks!</h3>
+		    		</div>
+		    		<div class="hidden-xs col-sm-6">
+		    			<img src="/img/mobile-iphone5.jpg" class="mobile_demo">
+		    		</div>
+		    	</div>
+		    </div>
+	  	</div>
 
-</div>
+	</div>
 
+<% if (timelines.length == 0) { %> <div class="text-center" style="background-color: #fff; padding: 30px;"><h4 style="color: #333; margin-top: 0px;">Looks like you don't have any timelines...</h4> <br> <a href="/timeline/new" class="btn btn-primary" style="margin: 0 10px 0 0; font-family: 'Heebo', sans-serif;">+ Create New Timeline</a></div> <% } %>
 
 <% timelines.forEach(function(timeline) { %>
 
@@ -42,9 +39,6 @@
 					<h2 class="timeline-title"><%= timeline.title %></h2>
 					<h5><%= timeline.description %></h5>
 				</div> 
-
-
-					
 
 
 				<div class="col-xs-12 col-sm-4" style="display: flex; justify-content: center;">
